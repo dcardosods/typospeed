@@ -30,7 +30,7 @@
                 finalWord = usableData;
             }
 
-            writeWord(finalWord);
+            writeWord(finalWord.toLowerCase().replace(/,.*$/, ''));
         }
         else {
             console.log('Words not found!');
