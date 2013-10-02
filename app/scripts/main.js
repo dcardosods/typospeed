@@ -1,22 +1,26 @@
+/* global loadJSONP */
+'use strict';
+
 (function (loadJSONP) {
 
-    var words = {};
-    var canvas = document.getElementById('canvas');
+    var words = {},
+        canvas = document.getElementById('canvas');
 
     var setWords = function (data) {
-        var i = 0;
-        var length = data.list.length;
-        for (; i < length; i++) {
+        for (var i = data.list.length - 1; i >= 0; i--) {
             words[data.list[i]] = '';
         }
 
-        writeWords(words)
+        writeWords(words);
     };
 
     var writeWords = function (words) {
+        var wordNode,
+            wordNodeContent;
+
         for (var word in words) {
-            var wordNode = document.createElement('div');
-            var wordNodeContent = document.createTextNode(word);
+            wordNode = document.createElement('div');
+            wordNodeContent = document.createTextNode(word);
             wordNode.appendChild(wordNodeContent);
             wordNode.classList.add('word');
             wordNode.style.top = ((Math.random() * 100) + 1) + 'px';
