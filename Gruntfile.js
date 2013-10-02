@@ -26,6 +26,11 @@ module.exports = function(grunt) {
                 jshintrc: '.jshintrc'
             },
             all: ['Gruntfile.js', 'app/scripts/*.js', '!app/scripts/vendor/*']
+        },
+        githooks: {
+            all: {
+                'pre-commit': 'jshint'
+            }
         }
     });
 
@@ -33,6 +38,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-githooks');
 
     // Default task(s).
     grunt.registerTask('default', ['connect:server', 'watch']);
