@@ -5,6 +5,7 @@
 
     var words = {},
         canvas = document.getElementById('canvas'),
+        canvasContext = canvas.getContext('2d'),
         wordsQuery = 'http://query.yahooapis.com/v1/public/yql?' +
             'q=use%0A%22http%3A%2F%2Fyqlblog.net%2Fsamples%2Fdata.html.cssselect.xml%22' +
             '%20as%20data.html.cssselect%3B%0Aselect%20*%20from%20data.html.cssselect' +
@@ -44,16 +45,15 @@
     };
 
     var writeWord = function (word) {
-        var wordNode,
-            wordNodeContent;
+        var usedYAxis = [],
+            yAxis;
 
-        wordNode = document.createElement('span');
-        wordNodeContent = document.createTextNode(word);
-        wordNode.appendChild(wordNodeContent);
-        wordNode.classList.add('word');
-        wordNode.style.top = Math.floor(((Math.random() * 100) + 1)) + 'px';
+        do {
+            yAxis = Math.floor(((Math.random() * 100) + 1));
+        } while (usedYAxis.indexOf(yAxis) > -1);
+        usedYAxis.push(yAxis);
 
-        canvas.appendChild(wordNode);
+        canvasContext.fillText(word, 10, yAxis);
     };
 
     loadJSONP(wordsQuery,setWords);
