@@ -12,7 +12,7 @@
             '%20and%0Acss%3D%22%23main%20.text%20.term%20h3%22&format=json';
 
     var setWords = function (data) {
-        if (data.query.results && data.query.results.results) {
+        if (data && data.query && data.query.results && data.query.results.results) {
             var usableData = data.query.results.results.h3,
                 finalWord;
 
@@ -38,6 +38,7 @@
             writeWord(finalWord.toLowerCase().replace(/,.*$/, ''));
         }
         else {
+            loadJSONP(wordsQuery,setWords);
             console.log('Words not found!');
         }
     };
