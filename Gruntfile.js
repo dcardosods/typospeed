@@ -29,7 +29,7 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            all: ['Gruntfile.js', 'app/scripts/*.js', '!app/scripts/vendor/*']
+            all: ['Gruntfile.js', 'app/scripts/*.js']
         },
         githooks: {
             all: {
