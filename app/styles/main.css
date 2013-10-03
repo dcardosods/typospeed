@@ -3,4 +3,10 @@
 }
 .word {
     position: absolute;
+    -webkit-animation: move 25s linear;
+}
+
+@-webkit-keyframes move {
+    0% { right: 100%; }
+    100% { right: 0; }
 }

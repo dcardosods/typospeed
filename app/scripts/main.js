@@ -53,6 +53,10 @@
         wordNode.classList.add('word');
         wordNode.style.top = Math.floor(((Math.random() * 100) + 1)) + 'px';
 
+        wordNode.addEventListener('webkitAnimationEnd', function () {
+            this.parentNode.removeChild(this);
+        }, false);
+
         canvas.appendChild(wordNode);
     };
 
