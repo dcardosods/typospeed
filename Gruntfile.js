@@ -8,7 +8,7 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     port: 8888,
-                    base: 'app'
+                    base: ['.tmp','app']
                 }
             }
         },
@@ -19,6 +19,10 @@ module.exports = function(grunt) {
             all: {
                 files: ['app/**/*'],
                 tasks: []
+            },
+            styles: {
+                files: ['app/styles/*.css'],
+                tasks: ['copy:styles', 'autoprefixer']
             }
         },
         jshint: {
@@ -31,6 +35,28 @@ module.exports = function(grunt) {
             all: {
                 'pre-commit': 'jshint'
             }
+        },
+        autoprefixer: {
+            options: {
+                browsers: ['last 1 version']
+            },
+            all: {
+                files: [{
+                    expand: true,
+                    cwd: '.tmp/styles/',
+                    src: '*.css',
+                    dest: '.tmp/styles/'
+                }]
+            }
+        },
+        copy: {
+            styles: {
+                expand: true,
+                dot: true,
+                cwd: 'app/styles/',
+                dest: '.tmp/styles/',
+                src: '*.css'
+            }
         }
     });
 
@@ -39,8 +65,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-githooks');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-autoprefixer');
 
     // Default task(s).
-    grunt.registerTask('default', ['connect:server', 'watch']);
+    grunt.registerTask('default', ['copy:styles', 'autoprefixer', 'connect:server', 'watch']);
 
 };
