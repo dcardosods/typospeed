@@ -1,1 +1,6 @@
-
+#canvas {
+    position: relative;
+}
+.word {
+    position: absolute;
+}

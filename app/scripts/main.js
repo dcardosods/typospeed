@@ -41,11 +41,11 @@
         var wordNode,
             wordNodeContent;
 
-        wordNode = document.createElement('div');
+        wordNode = document.createElement('span');
         wordNodeContent = document.createTextNode(word);
         wordNode.appendChild(wordNodeContent);
         wordNode.classList.add('word');
-        wordNode.style.top = ((Math.random() * 100) + 1) + 'px';
+        wordNode.style.top = Math.floor(((Math.random() * 100) + 1)) + 'px';
 
         canvas.appendChild(wordNode);
     };
