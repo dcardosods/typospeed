@@ -1,7 +1,7 @@
-/* global loadJSONP */
+/* global loadJSONP, checkPrefixer */
 'use strict';
 
-(function (loadJSONP) {
+(function (loadJSONP, checkPrefixer) {
 
     var words = {},
         canvas = document.getElementById('canvas'),
@@ -53,7 +53,7 @@
         wordNode.classList.add('word');
         wordNode.style.top = Math.floor(((Math.random() * 100) + 1)) + 'px';
 
-        wordNode.addEventListener('webkitAnimationEnd', function () {
+        wordNode.addEventListener(checkPrefixer.getAnimationEndEventName(), function () {
             this.parentNode.removeChild(this);
         }, false);
 
@@ -65,4 +65,4 @@
         loadJSONP(wordsQuery,setWords);
     }, 10000);
 
-})(loadJSONP);
+})(loadJSONP, checkPrefixer);
