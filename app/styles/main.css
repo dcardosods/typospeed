@@ -3,10 +3,19 @@
 }
 .word {
     position: absolute;
+    color: #27ae60;
     animation: move 25s linear;
 }
 
 @keyframes move {
-    0% { right: 100%; }
-    100% { right: 0; }
+    0% {
+        right: 100%;
+    }
+    50% {
+        color: #f1c40f;
+    }
+    100% {
+        right: 0;
+        color: #c0392b;
+    }
 }
