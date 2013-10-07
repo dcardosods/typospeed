@@ -11,7 +11,8 @@
             '%20where%20url%3D%22http%3A%2F%2Fwww.dicionario-aberto.net%2Frandom%22' +
             '%20and%0Acss%3D%22%23main%20.text%20.term%20h3%22&format=json',
         hits = 0,
-        errors = 0;
+        errors = 0,
+        animationDuration = 25;
 
     var setWords = function (data) {
         if (data && data.query && data.query.results && data.query.results.results) {
@@ -53,6 +54,7 @@
         wordNode.classList.add('word');
         wordNode.id = 'word-' + word;
         wordNode.style.top = Math.floor(((Math.random() * 100) + 1)) + 'px';
+        wordNode.style[checkPrefixer.getAnimationDurationName()] = animationDuration + 's';
 
         wordNode.addEventListener(checkPrefixer.getAnimationEndEventName(), function () {
             this.parentNode.removeChild(this);
@@ -95,6 +97,10 @@
     window.setInterval(function () {
         loadJSONP(wordsQuery,setWords);
     }, 10000);
+
+    window.setInterval(function () {
+        animationDuration -= 5;
+    }, 60000);
 
     document.forms[0].addEventListener('submit', checkWord, false);
 
