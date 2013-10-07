@@ -99,7 +99,9 @@
     }, 10000);
 
     window.setInterval(function () {
-        animationDuration -= 5;
+        if (animationDuration > 5) {
+            animationDuration -= 5;
+        }
     }, 60000);
 
     document.forms[0].addEventListener('submit', checkWord, false);
