@@ -51,6 +51,7 @@
         wordNodeContent = document.createTextNode(word);
         wordNode.appendChild(wordNodeContent);
         wordNode.classList.add('word');
+        wordNode.id = 'word-' + word;
         wordNode.style.top = Math.floor(((Math.random() * 100) + 1)) + 'px';
 
         wordNode.addEventListener(checkPrefixer.getAnimationEndEventName(), function () {
@@ -62,10 +63,13 @@
     };
 
     var checkWord = function (event) {
+        var word = this.word.value;
+
         event.preventDefault();
 
-        if (words[this.word.value]) {
+        if (words[word]) {
             updateScore('hits');
+            removeWord(word);
         }
         else {
             updateScore('errors');
@@ -84,6 +88,10 @@
         }
 
         document.getElementById(side).innerHTML = newValue;
+    };
+
+    var removeWord = function (word) {
+        canvas.removeChild(document.getElementById('word-' + word));
     };
 
     loadJSONP(wordsQuery,setWords);
