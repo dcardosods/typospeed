@@ -18,24 +18,22 @@
 
             if (Array.isArray(usableData)) {
                 if (usableData[0].content) {
-                    words[usableData[0].content] = '';
                     finalWord = usableData[0].content;
                 }
                 else {
-                    words[usableData[0]] = '';
                     finalWord = usableData[0];
                 }
             }
             else if (usableData.content) {
-                words[usableData.content] = '';
                 finalWord = usableData.content;
             }
             else {
-                words[usableData] = '';
                 finalWord = usableData;
             }
 
-            writeWord(finalWord.toLowerCase().replace(/,.*$/, ''));
+            finalWord = finalWord.toLowerCase().replace(/,.*$/, '');
+            words[finalWord] = true;
+            writeWord(finalWord);
         }
         else {
             loadJSONP(wordsQuery,setWords);
@@ -60,9 +58,24 @@
         canvas.appendChild(wordNode);
     };
 
+    var checkWord = function (event) {
+        event.preventDefault();
+
+        if (words[this.word.value]) {
+            console.log('ok');
+        }
+        else {
+            console.log('not ok');
+        }
+
+        this.word.value = '';
+    };
+
     loadJSONP(wordsQuery,setWords);
     window.setInterval(function () {
         loadJSONP(wordsQuery,setWords);
     }, 10000);
+
+    document.forms[0].addEventListener('submit', checkWord, false);
 
 })(loadJSONP, checkPrefixer);
