@@ -9,7 +9,9 @@
             'q=use%0A%22http%3A%2F%2Fyqlblog.net%2Fsamples%2Fdata.html.cssselect.xml%22' +
             '%20as%20data.html.cssselect%3B%0Aselect%20*%20from%20data.html.cssselect' +
             '%20where%20url%3D%22http%3A%2F%2Fwww.dicionario-aberto.net%2Frandom%22' +
-            '%20and%0Acss%3D%22%23main%20.text%20.term%20h3%22&format=json';
+            '%20and%0Acss%3D%22%23main%20.text%20.term%20h3%22&format=json',
+        hits = 0,
+        errors = 0;
 
     var setWords = function (data) {
         if (data && data.query && data.query.results && data.query.results.results) {
@@ -53,6 +55,7 @@
 
         wordNode.addEventListener(checkPrefixer.getAnimationEndEventName(), function () {
             this.parentNode.removeChild(this);
+            updateScore('errors');
         }, false);
 
         canvas.appendChild(wordNode);
@@ -62,13 +65,25 @@
         event.preventDefault();
 
         if (words[this.word.value]) {
-            console.log('ok');
+            updateScore('hits');
         }
         else {
-            console.log('not ok');
+            updateScore('errors');
         }
 
         this.word.value = '';
+    };
+
+    var updateScore = function (side) {
+        var newValue;
+        if (side === 'hits') {
+            newValue = ++hits;
+        }
+        else {
+            newValue = ++errors;
+        }
+
+        document.getElementById(side).innerHTML = newValue;
     };
 
     loadJSONP(wordsQuery,setWords);

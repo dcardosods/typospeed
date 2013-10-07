@@ -1,5 +1,6 @@
 body {
     font: 100%/1.5 Verdana, Arial;
+    color: #34495e;
 }
 #canvas {
     position: relative;
@@ -9,9 +10,31 @@ body {
     position: absolute;
     color: #27ae60;
     animation: move 25s linear;
+    font-size: 1.5em;
+}
+
+.score {
+    text-align: center;
+}
+.score p {
+    display: inline-block;
+    margin-right: 5em;
+    margin-left: 5em;
+    font-size: 2em;
+}
+.score span {
+    padding: 1em;
+    font-weight: bold;
+}
+#errors {
+    color: #c0392b;
+}
+#hits {
+    color: #27ae60;
 }
 
 form {
+    clear: both;
     text-align: center;
     font-size: 1.5em;
 }
