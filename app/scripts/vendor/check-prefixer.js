@@ -14,6 +14,14 @@ var checkPrefixer = (function() {
     '-ms-animation': 'MSAnimationEnd'
   };
 
+  var ANIMATION_DURATION_NAMES = {
+    'animation': 'animationDuration',
+    '-o-animation': 'oAnimationDuration',
+    '-moz-animation': 'animationDuration',
+    '-webkit-animation': 'webkitAnimationDuration',
+    '-ms-animation': 'MSAnimationDuration'
+  };
+
   return {
     getAnimationEndEventName: function() {
       var eventName,
@@ -22,6 +30,17 @@ var checkPrefixer = (function() {
       for (eventName in ANIMATION_END_EVENT_NAMES) {
         if (typeof(fakeEl.style[eventName]) !== 'undefined') {
           return ANIMATION_END_EVENT_NAMES[eventName];
+        }
+      }
+      return null;
+    },
+    getAnimationDurationName: function() {
+      var eventName,
+          fakeEl = document.createElement('fakeelement');
+
+      for (eventName in ANIMATION_DURATION_NAMES) {
+        if (typeof(fakeEl.style[eventName]) !== 'undefined') {
+          return ANIMATION_DURATION_NAMES[eventName];
         }
       }
       return null;
