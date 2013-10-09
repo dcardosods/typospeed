@@ -1,6 +1,6 @@
 body {
-    font: 100%/1.5 Verdana, Arial;
     color: #34495e;
+    font: 100%/1.5 Verdana, Arial;
 }
 #canvas {
     position: relative;
@@ -9,8 +9,8 @@ body {
 .word {
     position: absolute;
     color: #27ae60;
-    animation: move 25s linear;
     font-size: 1.5em;
+    animation: move 25s linear;
 }
 
 .score {
