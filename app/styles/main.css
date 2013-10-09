@@ -67,6 +67,12 @@ input[type=submit] {
     cursor: pointer;
 }
 
+footer {
+    padding: 0 2em;
+    text-align: right;
+    font-size: 0.75em;
+}
+
 @keyframes move {
     0% {
         right: 100%;
