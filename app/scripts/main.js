@@ -73,6 +73,9 @@
             updateScore('hits');
             removeWord(word);
         }
+        else {
+            updateScore('errors');
+        }
 
         this.word.value = '';
     };
