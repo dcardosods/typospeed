@@ -12,6 +12,7 @@
             '%20and%0Acss%3D%22%23main%20.text%20.term%20h3%22&format=json',
         hits = 0,
         errors = 0,
+        misses = 0,
         animationDuration = 25;
 
     var setWords = function (data) {
@@ -58,7 +59,7 @@
 
         wordNode.addEventListener(checkPrefixer.getAnimationEndEventName(), function () {
             this.parentNode.removeChild(this);
-            updateScore('errors');
+            updateScore('misses');
         }, false);
 
         canvas.appendChild(wordNode);
@@ -85,8 +86,11 @@
         if (side === 'hits') {
             newValue = ++hits;
         }
-        else {
+        else if (side === 'errors') {
             newValue = ++errors;
+        }
+        else {
+            newValue = ++misses;
         }
 
         document.getElementById(side).innerHTML = newValue;

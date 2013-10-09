@@ -16,15 +16,23 @@ body {
 .score {
     text-align: center;
 }
-.score p {
+.score-item {
     display: inline-block;
     margin-right: 5em;
     margin-left: 5em;
     font-size: 2em;
 }
-.score span {
+.score-item.featured {
+    position: relative;
+    margin: 0;
+}
+.score-value {
     padding: 1em;
     font-weight: bold;
+}
+.featured .score-value {
+    position: absolute;
+    bottom: 0.5em;
 }
 #errors {
     color: #c0392b;
