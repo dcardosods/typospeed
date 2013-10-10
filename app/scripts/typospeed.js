@@ -100,7 +100,7 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
 
         document.getElementById(side).innerHTML = newValue;
 
-        if (misses >= 10) {
+        if (misses === 10) {
             onGameOver();
         }
     };
