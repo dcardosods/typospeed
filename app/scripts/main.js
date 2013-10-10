@@ -1,8 +1,15 @@
-/* global typoSpeed */
+/* global typoSpeed, dialogPolyfill */
 'use strict';
 
-(function (typoSpeed) {
+(function (typoSpeed, dialog) {
 
-    typoSpeed.init();
+    var introModal = document.getElementById('intro-modal');
+    dialog.registerDialog(introModal);
+    introModal.showModal();
 
-})(typoSpeed);
+    document.getElementById('intro-modal-close').addEventListener('click', function() {
+        introModal.close();
+        typoSpeed.init();
+    });
+
+})(typoSpeed, dialogPolyfill);
