@@ -3,13 +3,24 @@
 
 (function (typoSpeed, dialog) {
 
-    var introModal = document.getElementById('intro-modal');
+    var introModal = document.getElementById('intro-modal'),
+        gameOverModal = document.getElementById('game-over-modal');
+
     dialog.registerDialog(introModal);
-    introModal.showModal();
+    dialog.registerDialog(gameOverModal);
 
     document.getElementById('intro-modal-close').addEventListener('click', function() {
         introModal.close();
-        typoSpeed.init();
+        typoSpeed.init(function () {
+            typoSpeed.stop();
+            gameOverModal.showModal();
+        });
     });
+
+    document.getElementById('game-over-modal-close').addEventListener('click', function() {
+        gameOverModal.close();
+    });
+
+    introModal.showModal();
 
 })(typoSpeed, dialogPolyfill);

@@ -16,7 +16,9 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
         hits = 0,
         errors = 0,
         misses = 0,
-        animationDuration = 25;
+        animationDuration = 25,
+        intervals = {},
+        onGameOver;
 
     var setWords = function (data) {
         if (data && data.query && data.query.results && data.query.results.results) {
@@ -97,6 +99,10 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
         }
 
         document.getElementById(side).innerHTML = newValue;
+
+        if (misses >= 10) {
+            onGameOver();
+        }
     };
 
     var removeWord = function (word) {
@@ -104,19 +110,25 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
     };
 
     return {
-        init: function () {
+        init: function (callback) {
             loadJSONP(wordsQuery,setWords);
-            window.setInterval(function () {
+            intervals.loadJSONP = window.setInterval(function () {
                 loadJSONP(wordsQuery,setWords);
             }, 10000);
 
-            window.setInterval(function () {
+            intervals.ckeckAnimationDuration = window.setInterval(function () {
                 if (animationDuration > 5) {
                     animationDuration -= 5;
                 }
             }, 60000);
 
             document.forms[0].addEventListener('submit', checkWord, false);
+
+            onGameOver = callback;
+        },
+        stop: function () {
+            window.clearInterval(intervals.loadJSONP);
+            window.clearInterval(intervals.ckeckAnimationDuration);
         }
     };
 
