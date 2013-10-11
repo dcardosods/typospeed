@@ -1,7 +1,7 @@
 {
-  "name": "typespeed-html5",
-  "version": "0.0.1",
-  "description": "Typespeed inpired game on browser",
+  "name": "typospeed",
+  "version": "0.1.0",
+  "description": "Typespeed inspired game on browser",
   "author": "Daniel Cardoso",
   "devDependencies": {
     "grunt-contrib-watch": "~0.5.3",
