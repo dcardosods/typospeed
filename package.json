@@ -1,6 +1,6 @@
 {
   "name": "typospeed",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Typespeed inspired game on browser",
   "author": "Daniel Cardoso",
   "devDependencies": {

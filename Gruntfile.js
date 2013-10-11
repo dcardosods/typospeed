@@ -56,11 +56,29 @@ module.exports = function(grunt) {
                 cwd: 'app/styles/',
                 dest: '.tmp/styles/',
                 src: '*.css'
+            },
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: 'app/',
+                        dest: 'dist/',
+                        src: '**'
+                    },
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: '.tmp/styles/',
+                        dest: 'dist/styles/',
+                        src: '*.css'
+                    }
+                ]
             }
         },
         'gh-pages': {
             options: {
-                base: 'app'
+                base: 'dist'
             },
             src: ['**']
         }
@@ -77,5 +95,8 @@ module.exports = function(grunt) {
 
     // Default task(s).
     grunt.registerTask('default', ['copy:styles', 'autoprefixer', 'connect:server', 'watch']);
+
+    // Build task
+    grunt.registerTask('build', ['copy:dist']);
 
 };
