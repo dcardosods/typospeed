@@ -57,6 +57,12 @@ module.exports = function(grunt) {
                 dest: '.tmp/styles/',
                 src: '*.css'
             }
+        },
+        'gh-pages': {
+            options: {
+                base: 'app'
+            },
+            src: ['**']
         }
     });
 
@@ -67,6 +73,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-githooks');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-gh-pages');
 
     // Default task(s).
     grunt.registerTask('default', ['copy:styles', 'autoprefixer', 'connect:server', 'watch']);
