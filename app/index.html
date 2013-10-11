@@ -8,8 +8,17 @@
 </head>
 <body>
     <dialog id="intro-modal">
-        <button id="intro-modal-close">Fechar</button>
         <h1>Instruções</h1>
+        <p>
+            O objetivo do jogo é digitar corretamente as palavras em movimento,
+            antes que elas cheguem ao final da tela.
+        </p>
+        <p>
+            As perdas acontecem, quando um palavra cruza totalmente a tela.
+            Com as palavras em movimento, cada palavra digitada incorretamente
+            conta um erro, e cada palavra palavra digitada corretamente conta um acerto.
+        </p>
+        <button id="intro-modal-close" class="button">Iniciar</button>
     </dialog>
     <dialog id="game-over-modal">
         <button id="game-over-modal-close">Fechar</button>
@@ -24,7 +33,7 @@
         </div>
         <form action="#">
             <input type="text" name="word" autofocus>
-            <input type="submit" value"Enviar">
+            <input type="submit" value"Enviar" class="button">
         </form>
     </main>
     <footer>
