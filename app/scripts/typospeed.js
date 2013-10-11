@@ -122,13 +122,13 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
             loadJSONP(wordsQuery,setWords);
             intervals.loadJSONP = window.setInterval(function () {
                 loadJSONP(wordsQuery,setWords);
-            }, 10000);
+            }, 5000);
 
             intervals.ckeckAnimationDuration = window.setInterval(function () {
-                if (animationDuration > 5) {
+                if (animationDuration > 10) {
                     animationDuration -= 5;
                 }
-            }, 60000);
+            }, 45000);
 
             document.forms[0].addEventListener('submit', checkWord, false);
 
