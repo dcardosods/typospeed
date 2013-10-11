@@ -105,6 +105,18 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
         }
     };
 
+    var resetScores = function () {
+        var scoresIds = ['errors', 'misses', 'hits'];
+
+        hits = 0;
+        errors = 0;
+        misses = 0;
+
+        for (var i = scoresIds.length - 1; i >= 0; i--) {
+            document.getElementById(scoresIds[i]).innerHTML = 0;
+        }
+    };
+
     var removeWord = function (word) {
         canvas.removeChild(document.getElementById('word-' + word));
     };
@@ -138,6 +150,12 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
             window.clearInterval(intervals.loadJSONP);
             window.clearInterval(intervals.ckeckAnimationDuration);
             removeWords();
+        },
+        reset: function () {
+            removeWords();
+            resetScores();
+            words = {};
+            animationDuration = 25;
         }
     };
 
