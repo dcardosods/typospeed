@@ -109,6 +109,14 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
         canvas.removeChild(document.getElementById('word-' + word));
     };
 
+    var removeWords = function () {
+        var wordsElements = document.getElementsByClassName('word');
+
+        for (var i = wordsElements.length - 1; i >= 0; i--) {
+            removeWord(wordsElements[i].innerHTML);
+        }
+    };
+
     return {
         init: function (callback) {
             loadJSONP(wordsQuery,setWords);
@@ -129,6 +137,7 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
         stop: function () {
             window.clearInterval(intervals.loadJSONP);
             window.clearInterval(intervals.ckeckAnimationDuration);
+            removeWords();
         }
     };
 
