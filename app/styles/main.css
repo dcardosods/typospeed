@@ -26,6 +26,11 @@ dialog + .backdrop {
     left: 0;
     background-color: rgba(52, 73, 94, 0.8);
 }
+#about-modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
 #canvas {
     position: relative;
