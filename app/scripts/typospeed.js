@@ -156,6 +156,13 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
             resetScores();
             words = {};
             animationDuration = 25;
+        },
+        getResult: function () {
+            return {
+                hits: hits,
+                misses: misses,
+                errors: errors
+            };
         }
     };
 
