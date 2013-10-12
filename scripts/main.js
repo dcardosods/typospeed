@@ -9,7 +9,16 @@
         gameOverCallback = function () {
             typoSpeed.stop();
             gameOverModal.showModal();
+            displayResults(typoSpeed.getResult());
         };
+
+    var displayResults = function (result) {
+        var resultText = 'Das ' + (result.hits + result.misses) + ' palavras, ' +
+            'você conseguiu acertar ' + result.hits + ', errando ' +
+            result.errors + ' vezes durante a partida.';
+
+        document.getElementById('game-over-modal-result').innerHTML = resultText;
+    };
 
     dialog.registerDialog(introModal);
     dialog.registerDialog(gameOverModal);
