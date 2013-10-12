@@ -30,6 +30,13 @@ dialog + .backdrop {
     position: absolute;
     top: 0;
     right: 0;
+    margin-top: 0;
+    padding: 0.5em;
+    height: auto;
+    border-bottom-color: #be2414;
+    background: #c0392b;
+    box-shadow: inset 0 -2px #be2414;
+    font-size: inherit;
 }
 
 #canvas {
@@ -98,9 +105,19 @@ input[type=text] {
 }
 
 footer {
-    padding: 0 2em;
-    text-align: right;
-    font-size: 0.75em;
+    padding: 2em 1em 0.5em;
+}
+footer a {
+    padding: 0.25em;
+    border: 2px solid #34495E;
+    border-width: 0 0 2px 1px;
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+footer a:hover {
+    border-width: 2px 1px 0 0;
 }
 
 @keyframes move {

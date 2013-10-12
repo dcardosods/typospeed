@@ -35,9 +35,11 @@
         typoSpeed.init(gameOverCallback);
     });
 
-    document.getElementById('about-modal-open').addEventListener('click', function(event) {
-        event.preventDefault();
-        aboutModal.showModal();
+    [].forEach.call(document.getElementsByClassName('about-modal-open'), function(element) {
+        element.addEventListener('click', function(event) {
+            event.preventDefault();
+            aboutModal.showModal();
+        });
     });
 
     document.getElementById('about-modal-close').addEventListener('click', function() {

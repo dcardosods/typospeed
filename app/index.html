@@ -19,15 +19,21 @@
             conta um erro, e cada palavra palavra digitada corretamente conta um acerto.
             O jogo termina com 10 perdas.
         </p>
+        <p>
+            <a href="#" class="about-modal-open">Mais informaçẽos sobre o jogo.</a>
+        </p>
         <button id="intro-modal-close" class="button">Iniciar</button>
     </dialog>
     <dialog id="game-over-modal">
         <h1>Game Over</h1>
         <p id="game-over-modal-result"></p>
+        <p>
+            <a href="#" class="about-modal-open">Sobre o jogo.</a>
+        </p>
         <button id="game-over-modal-close" class="button">Jogar Novamente</button>
     </dialog>
     <dialog id="about-modal">
-        <button id="about-modal-close">Fechar</button>
+        <button id="about-modal-close" class="button">Fechar</button>
         <h1>Sobre</h1>
         <p>
             A idéia deste jogo é baseada no game <a href="http://typespeed.sourceforge.net/">Typespeed</a>.
@@ -67,7 +73,7 @@
         </form>
     </main>
     <footer>
-        <a href="#" id="about-modal-open">Sobre</a>
+        <a href="#" class="about-modal-open">Sobre</a>
     </footer>
     <script src="scripts/vendor/jsonp.js"></script>
     <script src="scripts/vendor/check-prefixer.js"></script>
