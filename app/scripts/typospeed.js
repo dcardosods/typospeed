@@ -40,7 +40,7 @@ var typoSpeed = (function (loadJSONP, checkPrefixer) {
                 finalWord = usableData;
             }
 
-            finalWord = finalWord.toLowerCase().replace(/,.*$/, '');
+            finalWord = finalWord.toLowerCase().replace(/[,.]*$/, '');
             words[finalWord] = true;
             writeWord(finalWord);
         }
