@@ -81,6 +81,19 @@ module.exports = function(grunt) {
                 base: 'dist'
             },
             src: ['**']
+        },
+        replace: {
+            dist: {
+                options: {
+                    variables: {
+                        'UA-XXXXXXXX-X': 'UA-44805073-1'
+                    }
+                },
+                files: [{
+                    src: ['dist/index.html'],
+                    dest: 'dist/index.html'
+                }]
+            }
         }
     });
 
@@ -92,11 +105,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-gh-pages');
+    grunt.loadNpmTasks('grunt-replace');
 
     // Default task(s).
     grunt.registerTask('default', ['copy:styles', 'autoprefixer', 'connect:server', 'watch']);
 
     // Build task
-    grunt.registerTask('build', ['copy:dist']);
+    grunt.registerTask('build', ['copy:dist', 'replace:dist']);
 
 };
